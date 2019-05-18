@@ -33,6 +33,18 @@ def trapezoidal_mf(x, a, b, c, d):
     else:
         return 0
 
+def rating(x):
+    """
+    :param x: Value return from rule evaluation
+    :return: Yes, No, Maybe
+    """
+    if 0 <= x <= 0.3:
+        return "No"
+    if 0.4 <= x <= 6:
+        return "Maybe"
+    if 0.7 <= x <= 1:
+        return "Yes"
+
 
 # Customs
 # print(triangular_mf(0, 1, 40, 40))

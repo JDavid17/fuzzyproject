@@ -2,46 +2,54 @@
 database.py: Database − It defines the membership functions of fuzzy sets used in fuzzy rules.
 
 Input variables and categories:
-vars = {micro, videoCard, screen, price}
+vars = {micro, videoCard, price}
 
 Categories:
-micro = {bad, regular, good, veryGood} => [1-40]
+micro = {regular, good, veryGood} => [1-30]
 
-videoCard = {bad, regular, good, veryGood} => [1-40]
+videoCard = {regular, good, veryGood} => [1-30]
 
-screen = {bad, regular, good, veryGood} => [1-40]
-         
-price = {low, medium, high, veryHigh} => [1-40]
+price = {medium, high, veryHigh} => [1-30]
          bad  regular good  veryGood
 """
 
 from src.membership import triangular_mf
 
 
-def bad(x):
-    if 1 <= x <= 10:
-        return triangular_mf(x, 1, 40, 40)
-    else:
-        return 0
-
-
 def regular(x):
-    if 11 <= x <= 20:
-        return triangular_mf(x, 1, 40, 40)
+    if 1 <= x <= 10:
+        return triangular_mf(x, 1, 10, 10)
     else:
         return 0
 
 
 def good(x):
-    if 21 <= x <= 30:
-        return triangular_mf(x, 1, 40, 40)
+    if 11 <= x <= 20:
+        return triangular_mf(x, 11, 20, 20)
     else:
         return 0
 
 
 def veryGood(x):
-    if 31 <= x <= 40:
-        return triangular_mf(x, 1, 40, 40)
+    if 21 <= x <= 30:
+        return triangular_mf(x, 21, 30, 30)
     else:
         return 0
 
+def Yes(x):
+    if 0.6 <= x <= 1:
+        return triangular_mf(x, 0.6, 1, 1)
+    else:
+        return 0
+
+def No(x):
+    if 0.1 <= x <= 0.3:
+        return triangular_mf(x, 0.1, 0.3, 0.3)
+    else:
+        return 0
+
+def Maybe(x):
+    if 0.4 <= x <= 0.5:
+        return triangular_mf(x, 0.4, 0.5, 0.5)
+    else:
+        return 0
